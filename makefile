@@ -12,6 +12,7 @@ k.app:crt0.o a.o z.o s.o makefile
 bm:k.app
 	cd $B && BMFS_SIZE=16 ./baremetal.sh k.app
 bochs:bm
-	rlwrap bochs -n -q boot:disk "ata0: enabled=true" "ata0-master: type=disk, path=$B/sys/baremetal_os.img"
+	rlwrap bochs -n -q boot:disk ata0:enabled=true ata0-master:type=disk,path=$B/sys/baremetal_os.img \
+	 cpuid:simd=avx512,xsave=true,x86_64=true
 clean:
 	rm -rf pf k.app *.o k
