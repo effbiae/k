@@ -1,9 +1,9 @@
-#porting k to BareMetal-OS
+# porting k to BareMetal-OS
 
 `git clone` and edit the `makefile` to set your path to BareMetal-OS.
 
 `make bochs` will build k as an app and make an image with `baremetal.sh k.app` 
-and start bochs
+and start bochs. you need bochs configured with avx512 support (see below).
 
 to see the instruction it errors on, set a breakpoint in bochs with `b 0x000000407c49`
 and this is the erroring point:
@@ -12,11 +12,11 @@ and this is the erroring point:
 Next at t=21248957
 (0) [0x000000407c49] 0008:ffff800000007c49 (unk. ctxt): vpxorq zmm1, zmm0, zmmword ptr ds:[rdi] ; 62f1fd48ef0f
 ```
+stepping past this instruction dumps back into monitor.
 
+## what i did
 
-##what i did
-
-first, i replaced `syscall` with `call b_k` and put `b_k` in s.asm
+first, i replaced `syscall` with `call b_k` and put `b_k` in `s.asm`
 
 i pulled `_start` out and put it in `crt0.c`
 
