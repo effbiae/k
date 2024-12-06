@@ -1,6 +1,6 @@
 # porting k to BareMetal-OS
 
-`git clone` and edit the `makefile` to set your path to BareMetal-OS.
+`git clone` and edit the `makefile` to set your path to BareMetal-OS. also set `CC` to your clang compiler (may just be `clang`)
 
 `make bochs` will build k as an app and make an image with `baremetal.sh k.app` 
 and start bochs. you need bochs configured with avx512 support (see below).
