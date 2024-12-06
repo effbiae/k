@@ -1,0 +1,63 @@
+https://github.com/jubalh/awesome-os?tab=readme-ov-file
+interesting oses
+ https://github.com/malwarepad/cavOS
+ https://github.com/brutal-org/brutal
+
+qemu -m 256 -fda floppy.img
+
+Using clang 17
+ https://github.com/llvm/llvm-project/releases/tag/llvmorg-17.0.6
+
+sed -i s/syscall/call\ *0x108000/g *.[ch] 
+sed -i s/syscall/call b_k/g *.[ch] 
+
+bochs
+=====
+$ ./configure \
+--enable-smp \
+--enable-cpu-level=6 \
+--enable-all-optimizations \
+--enable-x86-64 \
+--enable-pci \
+--enable-usb \
+--enable-vmx \
+--enable-debugger \
+--enable-disasm \
+--enable-debugger-gui \
+--enable-logging \
+--enable-fpu \
+--enable-3dnow \
+--enable-sb16=dummy \
+--enable-cdrom \
+--enable-x86-debugger \
+--enable-iodebug \
+--disable-plugins \
+--disable-docbook \
+--with-x \
+--with-x11 \
+--with-term \
+--enable-avx \
+--enable-evex 
+size of k.app determines failure
+https://f.osdev.org/viewtopic.php?t=27608
+bss not being zeroed as kernel knows nothing about it
+
+
+#ifdef __AVX512F__ // note may need some other #def
+
+UV(bg,o(cvtb2mask)(a))
+
+#else
+          cvtd2mask512
+U generic_cvtb2mask512(V v) { U m=0;int i=0; W(i<64){m=(m<<1)|((v[i]&0x80)>>7);i++;}; return m;}
+
+UV(bg,generic_cvtb2mask512(a))
+
+#endif
+
+#if !__has_builtin(__builtin_ia32_pmaxud128)
+#define __builtin_ia32_pminub256(A,B) __builtin_elementwise_min(A,B)
+#define __builtin_ia32_pminud256(A,B) __builtin_elementwise_min(A,B)
+#define __builtin_ia32_pmaxub256(A,B) __builtin_elementwise_max(A,B)
+#define __builtin_ia32_pmaxud256(A,B) __builtin_elementwise_max(A,B)
+#endif
