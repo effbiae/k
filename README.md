@@ -8,12 +8,12 @@
 ```
 git clone https://github.com/effbiae/k.git
 ```
-edit the first line of the `makefile` to set `B` to the path to your BareMetal-OS directory.
+edit the first line of the `makefile` to set `B` to the path to your `BareMetal-OS` directory.
 
 `make bochs`. This will build k as an app and make an image with `baremetal.sh k.app`. 
-then it will start bochs.
+then it will start bochs. note you need bochs 2.8 with avx512 enabled (see below)
 
-when bochs starts, choose menu item 6 to start the simulation. 
+when bochs starts, choose menu item 6 to start the simulation.
 
 at the bochs prompt, set a breakpoint at the start of `k.app` with `b 0x400000`
 
@@ -33,12 +33,12 @@ set a breakpoint in the `_start` function of `k.app` with `b 0x40002d`
 continue execution with `c`
 
 note that bochs breaks at `0x40002d` at instruction `call rax` with `rax=ffff8000_000086e0`. 
-looking at the disassembly of `k.app`, the instruction at `0x86e0` is `push r15` but when
-bochs steps into the call with `s`, the instruction is 
+step into the call with `s`, and note the instruction is
 ```
 0) [0x0000004086e0] 0008:ffff8000000086e0 (unk. ctxt): mov ecx, edx              ; 63ca
 ```
-which is not consistent with the `k.app` image
+looking at the disassembly of `k.app`, the instruction at `0x86e0` is `push r15`
+so the `k.app` image hasn't been loaded right
 
 ## what i did
 
