@@ -1,5 +1,12 @@
 # porting k to BareMetal-OS
 
+## tldr
+```
+ an app built with baremetal.sh k.app isn't loaded properly.
+ the first 4096 bytes are ok, but different after that
+```
+
+## to reproduce
 `git clone` and edit the first line of the `makefile` to set your path to BareMetal-OS.
 
 `make bochs` will build k as an app and make an image with `baremetal.sh k.app` 
