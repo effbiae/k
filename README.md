@@ -5,7 +5,10 @@
  - the first 4096 bytes are ok, but different after that
 
 ## to reproduce
-`git clone` and edit the first line of the `makefile` to set your path to BareMetal-OS.
+```
+git clone https://github.com/effbiae/k.git
+```
+then edit the first line of the `makefile` to set your path to BareMetal-OS.
 
 `make bochs` will build k as an app and make an image with `baremetal.sh k.app` 
 and start bochs. you need bochs configured with avx512 support (see below).
@@ -48,6 +51,7 @@ $ ./configure --enable-smp --enable-cpu-level=6 --enable-all-optimizations --ena
 ```
 b 0x1e0170 write a ret to ProgramLocation
 b 0x1e01fe there is a single program
+b 0x1e0230 call [b_storage_read]
 b 0x1e0237 call [ProgramLocation]
 b 0x1e0fa0 [ProgramLocation]
 b 0x4086e0 main
