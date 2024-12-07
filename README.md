@@ -28,7 +28,7 @@ dump bochs memory with `writemem "bochs.mem" 0x400000 45792`.
 
 `!` note that `bochs.mem` differs from `k.app` from address `0x1000` onwards
 
-## to see execution go wrong...
+### to see execution go wrong...
 note that at the end of the previous section, execution stops at the start of `k.app`.
 the first instruction of `k.app` is `sub rsp,byte +0x18` which can be verified by disassembling
 the `k.app` with `ndisasm -b64 k.app`
@@ -45,19 +45,19 @@ step into the call with `s`, and note the instruction is
 looking at the disassembly of `k.app`, the instruction at `0x86e0` is `push r15`
 so the `k.app` image hasn't been loaded right
 
-## what i did
-
-first, i replaced `syscall` with `call b_k` and put `b_k` in `s.asm`
-
-i pulled `_start` out and put it in `crt0.c`
-
-### bochs 2.8 with avx512
+## bochs 2.8 with avx512
 i got the source for bochs 2.8 from https://sourceforge.net/projects/bochs/files/bochs/2.8/bochs-2.8.tar.gz/download
 
 and configured for debugging avx512 as
 ```
 $ ./configure --enable-smp --enable-cpu-level=6 --enable-all-optimizations --enable-x86-64 --enable-pci --enable-usb --enable-vmx --enable-debugger --enable-disasm --enable-debugger-gui --enable-logging --enable-fpu --enable-3dnow --enable-sb16=dummy --enable-cdrom --enable-x86-debugger --enable-iodebug --disable-plugins --disable-docbook --with-x --with-x11 --with-term --enable-avx --enable-evex
 ```
+
+## what i did
+
+first, i replaced `syscall` with `call b_k` and put `b_k` in `s.asm`
+
+i pulled `_start` out and put it in `crt0.c`
 
 ### notes
 ```
