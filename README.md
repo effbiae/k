@@ -12,8 +12,8 @@ edit the first line of the `makefile` to set `B` to the path to your `BareMetal-
 
 `make`. This will build k as an app and make an image with `baremetal.sh k.app`.
 
-note that at the start of execution of the k.app, the image is not loaded into memory
-correctly.  to verify this, follow this section:
+using your favourite emulator, note that at the start of execution of the k.app, the image
+is not loaded into memory correctly.  to verify this, i did this...
 
 ### diagnosing with bochs 2.8
 note you need bochs 2.8 with avx512 enabled (see below)
