@@ -3,6 +3,7 @@
 ## tldr
  - an app built and installed with `baremetal.sh k.app` isn't loaded properly.
  - the first 4096 bytes are ok, but different after that
+ - essentially the same as https://github.com/effbiae/thebug
 
 ## to reproduce
 ```
