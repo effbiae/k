@@ -10,10 +10,15 @@ git clone https://github.com/effbiae/k.git
 ```
 edit the first line of the `makefile` to set `B` to the path to your `BareMetal-OS` directory.
 
-`make bochs`. This will build k as an app and make an image with `baremetal.sh k.app`. 
-then it will start bochs. note you need bochs 2.8 with avx512 enabled (see below)
+`make`. This will build k as an app and make an image with `baremetal.sh k.app`.
 
-when bochs starts, choose menu item 6 to start the simulation.
+note that at the start of execution of the k.app, the image is not loaded into memory
+correctly.  to verify this, follow this section:
+
+### diagnosing with bochs 2.8
+note you need bochs 2.8 with avx512 enabled (see below)
+
+`make bochs`. when bochs starts, choose menu item 6 to start the simulation.
 
 at the bochs prompt, set a breakpoint at the start of `k.app` with `b 0x400000`
 

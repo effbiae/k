@@ -6,7 +6,7 @@ img=$B/sys/baremetal_os.img
 app=$B/sys/k.app
 rlwrap=$(shell which rlwrap)
 
-all:bochs
+all:$(img)
 pf/pf.h:
 	git clone https://github.com/kparc/pf.git
 dbg.o:pf/pf.h
@@ -20,4 +20,4 @@ $(img):$(app)
 bochs:$(img)
 	$(rlwrap) bochs -n -q boot:disk ata0-master:type=disk,path=$(img) cpu:model=sapphire_rapids
 clean:
-	rm -rf k.app *.o k
+	rm -rf pf k *.o $(img) $(app)
