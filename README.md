@@ -11,7 +11,7 @@ git clone https://github.com/effbiae/k.git
 edit the first line of the `makefile` to set your path to BareMetal-OS.
 
 `make bochs`. This will build k as an app and make an image with `baremetal.sh k.app`. 
-then it will start bochs. you may need bochs 2.8 with avx512 enabled.  see below.
+then it will start bochs.
 
 when bochs starts, choose menu item 6 to start the simulation. 
 
@@ -24,11 +24,9 @@ dump bochs memory with `writemem "bochs.mem" 0x400000 45792`.
 `!` note that `bochs.mem` differs from `k.app` from address `0x1000` onwards
 
 ## to see execution go wrong...
-set a breakpoint in the `_start` function of `k.app` with `b 0x40002d`
-
-continue execution with `c`
-
 note that execution stops at the start of `k.app` with the instruction `sub rsp,byte +0x18` this can be verified by disassembling the `k.app` with `ndisasm -b64 k.app`
+
+set a breakpoint in the `_start` function of `k.app` with `b 0x40002d`
 
 continue execution with `c`
 
