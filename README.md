@@ -8,7 +8,7 @@
 ```
 git clone https://github.com/effbiae/k.git
 ```
-edit the first line of the `makefile` to set your path to BareMetal-OS.
+edit the first line of the `makefile` to set `B` to the path to your BareMetal-OS directory.
 
 `make bochs`. This will build k as an app and make an image with `baremetal.sh k.app`. 
 then it will start bochs.
