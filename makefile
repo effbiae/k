@@ -1,6 +1,6 @@
 B=../BareMetal-OS
 CFLAGS=-Ofast -fno-builtin -funsigned-char -fno-unwind-tables -Wno-parentheses -Wno-incompatible-pointer-types -Wfatal-errors -nostdlib -mno-red-zone -mcmodel=large -fomit-frame-pointer -march=cannonlake -I$B/src/BareMetal/api
-CC=clang-13
+CC=$(shell which clang-13 clang |head -1)
 l=-z max-page-size=0x1000
 img=$B/sys/baremetal_os.img
 app=$B/sys/k.app
