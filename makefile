@@ -18,7 +18,6 @@ $(app):crt0.o dbg.o a.o z.o s.o makefile
 $(img):$(app)
 	cd $B && ./baremetal.sh k.app
 bochs:$(img)
-	$(rlwrap) bochs -n -q boot:disk ata0:enabled=true ata0-master:type=disk,path=$(img) \
-	 cpu:model=sapphire_rapids
+	$(rlwrap) bochs -n -q boot:disk ata0-master:type=disk,path=$(img) cpu:model=sapphire_rapids
 clean:
 	rm -rf k.app *.o k
