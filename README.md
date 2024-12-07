@@ -1,7 +1,7 @@
 # porting k to BareMetal-OS
 
 ## tldr
- - an app built with `baremetal.sh k.app` isn't loaded properly.
+ - an app built and installed with `baremetal.sh k.app` isn't loaded properly.
  - the first 4096 bytes are ok, but different after that
 
 ## to reproduce
@@ -10,11 +10,18 @@
 `make bochs` will build k as an app and make an image with `baremetal.sh k.app` 
 and start bochs. you need bochs configured with avx512 support (see below).
 
-when bochs starts, choose menu item 6 to start the simulation. at the bochs prompt, set two breakpoints in the `_start` function of `k.app`:
-```
-b 0x400000
-b 0x40002d
-```
+when bochs starts, choose menu item 6 to start the simulation. 
+at the bochs prompt, set a breakpoint at the start of 
+`k.app` with `b 0x400000`
+
+continue execution with `c`.  note execution breaks at the start of `k.app`
+
+dumped bochs memory with `writemem "bochs.mem" 0x400000 45792`. note that `bochs.mem` differs from `k.app` from address `0x1000` onwards
+
+## further investigation
+
+set a breakpoint in the `_start` function of `k.app` with `b 0x40002d`
+
 continue execution with `c`
 
 note that execution stops at the start of `k.app` with the instruction `sub rsp,byte +0x18` this can be verified by disassembling the `k.app` with `ndisasm -b64 k.app`
@@ -26,8 +33,6 @@ note that bochs breaks at `0x40002d` at instruction `call rax` with `rax=ffff800
 0) [0x0000004086e0] 0008:ffff8000000086e0 (unk. ctxt): mov ecx, edx              ; 63ca
 ```
 which is not consistent with the `k.app` image
-
-i dumped bochs memory with `writemem "bochs.mem" 0x400000 45792` and found that `bochs.mem` differs from `k.app` from address `0x1000` onwards
 
 ## what i did
 
