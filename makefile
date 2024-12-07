@@ -4,6 +4,7 @@ CC=clang-13
 l=-z max-page-size=0x1000
 img=$B/sys/baremetal_os.img
 app=$B/sys/k.app
+rlwrap=$(shell which rlwrap)
 
 all:bochs
 pf/pf.h:
@@ -17,7 +18,7 @@ $(app):crt0.o dbg.o a.o z.o s.o makefile
 $(img):$(app)
 	cd $B && ./baremetal.sh k.app
 bochs:$(img)
-	rlwrap bochs -n -q boot:disk ata0:enabled=true ata0-master:type=disk,path=$(img) \
+	$(rlwrap) bochs -n -q boot:disk ata0:enabled=true ata0-master:type=disk,path=$(img) \
 	 cpu:model=sapphire_rapids
 clean:
 	rm -rf k.app *.o k
