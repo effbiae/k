@@ -8,10 +8,10 @@
 ```
 git clone https://github.com/effbiae/k.git
 ```
-then edit the first line of the `makefile` to set your path to BareMetal-OS.
+edit the first line of the `makefile` to set your path to BareMetal-OS.
 
-run `make bochs`. This will build k as an app and make an image with `baremetal.sh k.app`. 
-then it will start bochs. you need bochs configured with avx512 support (see below).
+`make bochs`. This will build k as an app and make an image with `baremetal.sh k.app`. 
+then it will start bochs. you may need bochs 2.8 with avx512 enabled.  see below.
 
 when bochs starts, choose menu item 6 to start the simulation. 
 
@@ -44,7 +44,10 @@ first, i replaced `syscall` with `call b_k` and put `b_k` in `s.asm`
 
 i pulled `_start` out and put it in `crt0.c`
 
-i got the source for bochs 2.8 and configured for debugging avx512 as
+### bochs 2.8 with avx512
+i got the source for bochs 2.8 from https://sourceforge.net/projects/bochs/files/bochs/2.8/bochs-2.8.tar.gz/download
+
+and configured for debugging avx512 as
 ```
 $ ./configure --enable-smp --enable-cpu-level=6 --enable-all-optimizations --enable-x86-64 --enable-pci --enable-usb --enable-vmx --enable-debugger --enable-disasm --enable-debugger-gui --enable-logging --enable-fpu --enable-3dnow --enable-sb16=dummy --enable-cdrom --enable-x86-debugger --enable-iodebug --disable-plugins --disable-docbook --with-x --with-x11 --with-term --enable-avx --enable-evex
 ```
