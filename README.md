@@ -19,7 +19,9 @@ at the bochs prompt, set a breakpoint at the start of
 
 continue execution with `c`.  note execution breaks at the start of `k.app`
 
-dump bochs memory with `writemem "bochs.mem" 0x400000 45792`. note that `bochs.mem` differs from `k.app` from address `0x1000` onwards
+dump bochs memory with `writemem "bochs.mem" 0x400000 45792`. 
+
+`!` note that `bochs.mem` differs from `k.app` from address `0x1000` onwards
 
 ## to see execution go wrong...
 set a breakpoint in the `_start` function of `k.app` with `b 0x40002d`
