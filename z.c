@@ -1,4 +1,6 @@
 #include"z.h"//iax 0x0 00x x+i@hwZgw:fRx+:e(lz,:cw)S6Z'(kz,:!bw)*6.9?.bw:aRx
+void debug(int line);
+#define DBG debug(__LINE__);
 Z0*t,_[3][64];ZU*A,h,C[3][8],G[32];_i(vf,ss=b;j(26,Ux=G[j+1];*s=97+j;s+=x&&i^px)ns(s-b,b))_Z(_A,j(8,_r(C[0][j]))*(V*)C=z0)_g(d,_r(G[i%=B]);G[i]=x;1)
 G(z,in=mn;Uu[n];i(n,u[i]=G[i+1];G[i+1]=a_(i,a))a=_a(G[24]);G[24]=x;x=q(i);d(24,a);i(n,d(i+1,u[i]))x)G(Z,j(mn,x=Q(z(i,a_(j,a),x)))_a(x))
 G(K,4>(x=k(i%=B,a,x))?(wc(P[i]),w0(4,&"nyi ranklen type"[4*x]),0):x)is(n,Ua=r_(B>*s?A[*s]:G[*s%B]?:Q(w0(1,s)));P(!--i,a)Ux=Q(n(i,s+1));pa?z(a,0,x):K(13,a,x))
@@ -6,7 +8,7 @@ is(e,ij;Ua=v(*s)?(--i,*s++):r(Q(n(j=l(i,ib(B<=Vs-B&2<*(V*)(s+1)-61)),s)),i-=j;s+
 is(p,ij=ic(B,s);if(i>j){Ux=Q(p(i-j-1,s+j+1));ih=v(s[--j]);G[i=s[j-=h]%B]&&h?G[i]=K(s[j+1],G[i],x):d(i,x);i=j+1;}e(i,s))_i(q,A=C+i;ss=_[i];i=*s++;2<i&3>ic(B,s)?(_r(p(i,s)),1):p(i,s))
 //repl
 is(ts,ps(0,s);Uu=ut();i(i,Q(_r(q(0))))u=ut()-u-20*i;_A();ti(.5+u/2.4e6))s(ls,Ua=1l<<32;in=ms(a,(U)s);Qs(!n)s=(i0*)a;ii=-1;W((U)(s+=i+1)<a+n&&(i=ic(10,s)))if(47!=*s)Q(w(s));_m(a,n);1)
-s(w,Ux=92!=*s?qs(s):$5(ic(*++s,"\\ltw"),_k(0),c(10,s+2);ls(b),c(B,s+1);ii=ic(10,b);ts(i?qs(b):1,b+i+1),ti(k(0,0,0)),vf(110<*s));wx(x))int main(int i,i0**a){$(*++a,ls(*a))ws(L);W(_w(wc(B),b,256))if(10<*b)w(b);}
+s(w,Ux=92!=*s?qs(s):$5(ic(*++s,"\\ltw"),_k(0),c(10,s+2);ls(b),c(B,s+1);ii=ic(10,b);ts(i?qs(b):1,b+i+1),ti(k(0,0,0)),vf(110<*s));wx(x))int main(int i,i0**a){DBG $(*++a,ls(*a))ws(L);W(_w(wc(B),b,256))if(10<*b)w(b);}
 is(e$,ee=3==i&101==s[1]?*s%16*I[s[2]%16]:2.3;*(i2*)&e)is($e,Vs=*(V*)"?.?";3)U_(w2,w_(2,(U)s,i),ii,ss)
 //parse !"#$%&'()*+, -./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`..{|}~ :()[]{}
 _i(P_,"-,&/3$%=__#!2\"+>            ')(.-7___:______45____;6______<_?_10"[64>i?i:94>i?2:63])ins(u,Ux=R(i,nc(n,B,s)+1,sd=s+n;j(nr,r2[j]=(4>i?i$:e$)(n=l(d-s,ic(B,s)),s);s+=n+1));2>nx?_v(x):x)
